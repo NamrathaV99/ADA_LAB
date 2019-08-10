@@ -1,21 +1,34 @@
 #include <iostream>
+#include <fstream>
 using namespace std;
 int main()
 {
-	int i,n,a[50],max;
-	cout<<"Emter the value of n :";
-	cin>>n;
-	cout<<"Enter the "<<n<<" values :"<<endl;
-	for(i=0;i<n;i++)
+	 std::fstream myfile("C:/Users/lenovo/Desktop/ADA LAB/Additional_Assignment/Input.txt", std::ios_base::in);
+	int n,i,j,a[100],k,t,flag=-1;
+    cout<<"Enter the no. of test cases:"<<endl;
+	myfile>>t;
+
+
+	cout<<"Enter the number of array elements and the number to be found "<<endl;
+
+	for(i=0;i<t;i++)
 	{
-		cin>>a[i];
+		myfile>>n;
+	    myfile>>k;
+
+		cout<<"Enter the array elements "<<endl;
+		for(j=0;j<n;j++)
+		{
+			myfile>>a[j];
+			if(a[j] == k)
+				flag=1;
+		}
+
+		if(flag==1)
+			cout<<"Element found!!!"<<endl;
+		else
+			cout<<"Not found";
+
 	}
-	max=a[0];
-	for(i=1;i<n;i++)
-	{
-		if(a[i]>max)
-			max=a[i];
-	}
-	cout<<"Max value : "<<max;
-	return 0;
+
 }
